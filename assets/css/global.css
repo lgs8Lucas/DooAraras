@@ -6,3 +6,8 @@
     --color-highlight: #f9c74f;
     --color-highlight-alt: #f3722c;
 }
+
+.da-header {
+    background-color: var(--color-headers);
+    color: var(--color-alter-text);
+}

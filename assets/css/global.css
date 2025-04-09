@@ -11,3 +11,7 @@
     background-color: var(--color-headers);
     color: var(--color-alter-text);
 }
+
+.da-text-color{
+    color: var(--color-text); 
+}

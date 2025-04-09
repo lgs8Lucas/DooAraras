@@ -12,11 +12,10 @@
 		crossorigin="anonymous" />
 	<link rel="stylesheet" href="assets/css/global.css">
 </head>
-
 <body>
 	<nav class="navbar navbar-expand-lg  da-header" data-bs-theme="dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="./index.php">
 				<img src="./assets/img/logoAraras.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
 				DooAraras
 			</a>
@@ -42,11 +41,11 @@
 						<a class="nav-link" href="#">Serviços</a>
 					</li>
 				</ul>
-				<a class="btn btn-outline-success" href="#">Entrar</a>
+				<a class="btn btn-outline-warning" href="./pages/loginPage.php">Entrar</a>
 			</div>
 		</div>
 	</nav>
-
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"

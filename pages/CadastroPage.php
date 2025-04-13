@@ -56,11 +56,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" required>
+                    <input type="text" class="form-control" id="cpf" name="cpf" required maxlength="11">
                 </div>
                 <div class="mb-3">
                     <label for="telefone" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" id="telefone" name="telefone" required>
+                    <input type="text" class="form-control" id="telefone" name="telefone" required maxlength="11">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
@@ -68,7 +68,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="cargo" class="form-label">Cargo</label>
-                    <input type="text" class="form-control" id="cargo" name="cargo" required>
+                    <select name="cargo" id="cargo" class="form-select" required>
+                        <option value="A">Admin</option>
+                        <option value="U" selected>Usuário Padrão</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="senha" class="form-label">Senha</label>

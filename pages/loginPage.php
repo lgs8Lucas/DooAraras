@@ -66,7 +66,7 @@
                 <button type="submit" class="btn btn-success mb-3">Entrar</button>
                 <hr>
                 <div class="mb-3 text-center">
-                    Não tem uma conta? <a href="Cadastro.php">Cadastre-se!</a>
+                    Não tem uma conta? <a href="CadastroPage.php">Cadastre-se!</a>
                 </div>
             </form>
         </div>

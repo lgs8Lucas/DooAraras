@@ -18,9 +18,41 @@ if (
    $cargo = addslashes($_POST['cargo']);
    $senha = addslashes($_POST['senha']);
    $senha = password_hash($senha, PASSWORD_DEFAULT);
+
+   $sql = "SELECT CPF, email FROM usuario WHERE CPF = '$cpf' OR email = '$email'";
+   $sql = $pdo->query($sql);
+   $sql = $sql->fetch(PDO::FETCH_ASSOC);
+   $cpf2 = $sql['CPF'];
+   $email2 = $sql['email'];
+   
+   if($cpf2){
+      echo "
+         <meta http-equiv='refresh' content='0;URL=./../pages/CadastroPage.php'>
+         <script type='text/javascript'>
+            alert('CPF já cadastrado!');
+         </script>
+      ";
+      exit;
+   }else if ($email2){
+      echo "
+         <meta http-equiv='refresh' content='0;URL=./../pages/CadastroPage.php'>
+         <script type='text/javascript'>
+            alert('Email já cadastrado!');
+         </script>
+      ";
+      exit;
+   }
+
    $sql = "INSERT INTO usuario (nome, cpf, telefone, email, cargo, senha) VALUES ('$nome', '$cpf', '$telefone', '$email', '$cargo', '$senha')";
    $sql = $pdo->query($sql);
-   setcookie('acesso', $cargo, time() + 86400, '/', '', true, true);
+
+   $sql = "SELECT id FROM usuario WHERE CPF = '$cpf'";
+   $sql = $pdo->query($sql);
+   $sql = $sql->fetch(PDO::FETCH_ASSOC);
+   $id = $sql['id'];
+   
+   setcookie('id', $id, time() + 86400, '/');
+   setcookie('acesso', $cargo, time() + 86400, '/');
    echo "
       <meta http-equiv='refresh' content='0;url=./../index.php'>
       <script type='text/javascript'>

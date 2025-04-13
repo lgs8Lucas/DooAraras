@@ -15,3 +15,20 @@
 .da-text-color{
     color: var(--color-text); 
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main{
+    flex-grow: 1;
+}
+
+.da-footer{
+    color: white;
+    background-color: var(--color-headers);
+    text-align: center;
+    padding: 2em 0 .5em 0;
+}

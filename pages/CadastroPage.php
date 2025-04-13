@@ -48,7 +48,7 @@ require './../db/redirectComLogin.php';
         </div>
     </nav>
     <main class="container d-flex justify-content-center mt-3 da-text-color">
-        <div class="border rounded p-4 bg-white shadow-sm" style="width: 500px;">
+        <div class="border rounded p-4 bg-white shadow-sm" style="width: 500px; height: fit-content;">
             <h1>Cadastro</h1>
             <form action="./../db/cadastrarUser.php" method="post">
                 <div class="mb-3">
@@ -57,7 +57,7 @@ require './../db/redirectComLogin.php';
                 </div>
                 <div class="mb-3">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" required maxlength="11">
+                    <input type="text" class="form-control" placeholder="somente numeros" id="cpf" name="cpf" required maxlength="11">
                 </div>
                 <div class="mb-3">
                     <label for="telefone" class="form-label">Telefone</label>
@@ -87,6 +87,9 @@ require './../db/redirectComLogin.php';
             </form>
         </div>
     </main>
+    <footer class="da-footer">
+        <p>&copy; 2025 DooAraras.</p>
+    </footer>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"

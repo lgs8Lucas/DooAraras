@@ -41,12 +41,12 @@
 					<li class="nav-item">
 						<a class="nav-link" href="./pages/doacoesPage.php">Doações</a>
 					</li>
-					<?php if ($acesso) { 
+					<?php if ($acesso) {
 						echo '<a class="nav-link" href="./pages/cadastroDoacaoPage.php">Cadastrar Doação</a>';
 						echo '<a class="nav-link" href="./pages/minhasDoacoesPage.php">Minhas Doações</a>';
 						if ($acesso == 'A') {
 							echo '<a class="nav-link" href="./pages/adminDoacoesPage.php">Aprovar doações</a>';
-							echo '<a class="nav-link" href="./pages/usuariosPage.php">Editar Usuários</a>';
+							echo '<a class="nav-link" href="./pages/usuariosPage.php">Usuários</a>';
 						}
 						echo '<a class="nav-link" href="./pages/contaPage.php">Minha conta</a>';
 					}
@@ -63,11 +63,22 @@
 			</div>
 		</div>
 	</nav>
+	<main class="container mt-3 da-text-color">
+		<h1>Início</h1>
 
+
+		
+	</main>
+
+	<footer class="da-footer">
+		<p>&copy; 2025 DooAraras.</p>
+	</footer>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
 		crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>

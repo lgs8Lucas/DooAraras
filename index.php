@@ -45,7 +45,7 @@
 						echo '<a class="nav-link" href="./pages/cadastroDoacaoPage.php">Cadastrar Doação</a>';
 						echo '<a class="nav-link" href="./pages/minhasDoacoesPage.php">Minhas Doações</a>';
 						if ($acesso == 'A') {
-							echo '<a class="nav-link" href="./pages/adminDoacoesPage.php">Aprovar doações</a>';
+							echo '<a class="nav-link" href="./pages/tiposDoacoesPage.php">Tipos de doações</a>';
 							echo '<a class="nav-link" href="./pages/usuariosPage.php">Usuários</a>';
 						}
 						echo '<a class="nav-link" href="./pages/contaPage.php">Minha conta</a>';
@@ -67,7 +67,32 @@
 		<h1>Início</h1>
 
 
-		
+		<div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="active"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active"></button>
+		</div>
+		<div class="carousel-inner rounded">
+			<div class="carousel-item active">
+			<img src="./assets/img/logoAraras.png" class="d-block w-40" alt="Imagem1">
+			</div>
+			<div class="carousel-item">
+			<img src="./assets/img/logoAraras.png" class="d-block w-40" alt="Imagem2">
+			</div>
+			<div class="carousel-item">
+			<img src="./assets/img/doe.png" class="d-block w-40" alt="Imagem3">
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon"></span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</button>
+		</div>
+
+
 	</main>
 
 	<footer class="da-footer">

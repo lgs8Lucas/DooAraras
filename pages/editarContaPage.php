@@ -1,7 +1,8 @@
 <?php
-require "../db/redirectSemAdmin.php";
+require "../db/redirectSemLogin.php";
 require "../db/connection.php";
 $acesso = $_COOKIE['acesso'] ?? null;
+$id = $_COOKIE['id'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +50,9 @@ $acesso = $_COOKIE['acesso'] ?? null;
                         echo '<a class="nav-link" href="./../pages/minhasDoacoesPage.php">Minhas Doações</a>';
                         if ($acesso == 'A') {
                             echo '<a class="nav-link" href="./../pages/tiposDoacoesPage.php">Tipos de doações</a>';
-                            echo '<a class="nav-link active" href="./../pages/usuariosPage.php">Usuários</a>';
+                            echo '<a class="nav-link" href="./../pages/usuariosPage.php">Usuários</a>';
                         }
-                        echo '<a class="nav-link" href="./../pages/contaPage.php">Minha conta</a>';
+                        echo '<a class="nav-link active" href="./../pages/contaPage.php">Minha conta</a>';
                     }
                     ?>
                 </ul>
@@ -59,7 +60,7 @@ $acesso = $_COOKIE['acesso'] ?? null;
                 if ($acesso) {
                     echo '<a class="btn btn-outline-danger" href="./../db/logout.php">Sair</a>';
                 } else {
-                    echo '<a class="btn btn-outline-warning" href="./../pages/loginPage.php">Entrar</a>';
+                    echo '<a class="btn btn-outline-warning" href="./../loginPage.php">Entrar</a>';
                 }
                 ?>
 
@@ -67,38 +68,33 @@ $acesso = $_COOKIE['acesso'] ?? null;
         </div>
     </nav>
     <main class="container mt-3 da-text-color">
-        <h1>Usuários</h1>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Cargo</th>
-                    <th scope="col">Excluir</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = "SELECT id, nome, email, CPF, telefone, cargo FROM usuario";
-                $sql = $pdo->query($sql);
-                foreach ($sql->fetchAll() as $usuario) {
-                    echo "<tr>";
-                    echo "<td>" . $usuario['id'] . "</td>";
-                    echo "<td>" . $usuario['nome'] . "</td>";
-                    echo "<td>" . $usuario['email'] . "</td>";
-                    echo "<td>" . $usuario['CPF'] . "</td>";
-                    echo "<td>" . $usuario['telefone'] . "</td>";
-                    echo "<td>" . ($usuario['cargo'] == 'A' ? 'Administrador' : 'Usuário Padrão') . "</td>";
-                    echo '<td><a href="./../db/excluirUsuario.php?id=' . $usuario['id'] . '" class="btn btn-danger">Excluir</a></td>';
-                    echo "</tr>";
-                }
-                ?>
-                
-            </tbody>
-        </table>
+        <?php
+        $sql = "SELECT nome, email, telefone FROM usuario WHERE id = '$id'";
+        $sql = $pdo->query($sql);
+        $user = $sql->fetch(PDO::FETCH_ASSOC);
+        ?>
+        <h1>Edição de conta</h1>
+        <h2 class="mt-3">Dados da conta: </h2>
+        <form action="./../db/editarConta.php" method="post">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required value="<?php echo $user['nome']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" required maxlength="11" value="<?php echo $user['telefone']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required value="<?php echo $user['email']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+            </div>
+            <button type="submit" class="btn btn-success mb-3">Alterar</button>
+        </form>
+
     </main>
     <footer class="da-footer">
         <p>&copy; 2025 DooAraras.</p>

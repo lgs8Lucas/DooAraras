@@ -7,14 +7,11 @@ require 'redirectComLogin.php';
 $emailDigitado = $_POST["email"] ?? " ";
 $senhaDigitada = $_POST["password"] ?? " ";
 
-$stmt = $pdo->prepare("SELECT senha, cargo FROM usuario WHERE :email");
-$stmt->bindParam(":email", $emailDigitado);
-$stmt->execute();
-
-$linha = $stmt->fetch(PDO::FETCH_ASSOC);
-$hashArmazenado= $linha['senha'];
-$acesso = $linha['cargo'];
-
+$sql = "SELECT senha, cargo FROM usuario WHERE email = '$emailDigitado'";
+$sql = $pdo->query($sql);
+$sql = $sql->fetch(PDO::FETCH_ASSOC);
+$hashArmazenado = $sql['senha'];
+$acesso = $sql['cargo'];
 
 if ($hashArmazenado) {
    

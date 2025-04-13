@@ -18,18 +18,16 @@ if (
    $senha = password_hash($senha, PASSWORD_DEFAULT);
    $sql = "INSERT INTO usuario (nome, cpf, telefone, email, cargo, senha) VALUES ('$nome', '$cpf', '$telefone', '$email', '$cargo', '$senha')";
    $sql = $pdo->query($sql);
-   setcookie('usuario', $cpf, time() + 86400);
-   setcookie('acesso', $cargo, time() + 86400);
+   setcookie('acesso', $cargo, time() + 86400, '/', '', true, true);
    echo "
       <meta http-equiv='refresh' content='0;url=./../index.php'>
       <script type='text/javascript'>
          alert('Cadastro realizado com sucesso!');
       </script>
    ";
-   echo "oi";
 } else {
    echo "
-		<meta http-equiv=refresh content='0; URL=./../pages/CadastroPage.php>
+		<meta http-equiv=refresh content='0; URL=./../pages/CadastroPage.php'>
 			<script type=\"text/javascript\">
 				alert(\"Por favor preencha todos os campos\");
 			</script>

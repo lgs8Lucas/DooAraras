@@ -12,7 +12,12 @@
 		crossorigin="anonymous" />
 	<link rel="stylesheet" href="assets/css/global.css">
 </head>
+
 <body>
+	<?php
+	$acesso = $_COOKIE['acesso'] ?? null;
+	echo $acesso;
+	?>
 	<nav class="navbar navbar-expand-lg  da-header" data-bs-theme="dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="./index.php">
@@ -41,11 +46,18 @@
 						<a class="nav-link" href="#">Serviços</a>
 					</li>
 				</ul>
-				<a class="btn btn-outline-warning" href="./pages/loginPage.php">Entrar</a>
+				<?php
+				if ($acesso != null) {
+					echo '<a class="btn btn-danger" href="./db/logout.php">Sair</a>';
+				} else {
+					echo '<a class="btn btn-warning" href="./pages/loginPage.php">Entrar</a>';
+				}
+				?>
+
 			</div>
 		</div>
 	</nav>
-	
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"

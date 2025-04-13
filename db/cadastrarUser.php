@@ -1,5 +1,7 @@
 <?php
 require 'connection.php';
+require 'redirectComLogin.php';
+
 if (
    isset($_POST['nome'], $_POST['cpf'], $_POST['telefone'], $_POST['email'], $_POST['cargo'], $_POST['senha']) &&
    !empty($_POST['nome']) &&

@@ -16,7 +16,6 @@
 <body>
 	<?php
 	$acesso = $_COOKIE['acesso'] ?? null;
-	echo $acesso;
 	?>
 	<nav class="navbar navbar-expand-lg  da-header" data-bs-theme="dark">
 		<div class="container-fluid">
@@ -40,17 +39,24 @@
 						<a class="nav-link active" aria-current="page" href="./index.php">Início</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Doações</a>
+						<a class="nav-link" href="./pages/doacoesPage.php">Doações</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Serviços</a>
-					</li>
+					<?php if ($acesso) { 
+						echo '<a class="nav-link" href="./pages/cadastroDoacaoPage.php">Cadastrar Doação</a>';
+						echo '<a class="nav-link" href="./pages/minhasDoacoesPage.php">Minhas Doações</a>';
+						if ($acesso == 'A') {
+							echo '<a class="nav-link" href="./pages/adminDoacoesPage.php">Aprovar doações</a>';
+							echo '<a class="nav-link" href="./pages/usuariosPage.php">Editar Usuários</a>';
+						}
+						echo '<a class="nav-link" href="./pages/contaPage.php">Minha conta</a>';
+					}
+					?>
 				</ul>
 				<?php
-				if ($acesso != null) {
-					echo '<a class="btn btn-danger" href="./db/logout.php">Sair</a>';
+				if ($acesso) {
+					echo '<a class="btn btn-outline-danger" href="./db/logout.php">Sair</a>';
 				} else {
-					echo '<a class="btn btn-warning" href="./pages/loginPage.php">Entrar</a>';
+					echo '<a class="btn btn-outline-warning" href="./pages/loginPage.php">Entrar</a>';
 				}
 				?>
 

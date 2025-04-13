@@ -1,3 +1,7 @@
+<?php
+require './../db/redirectComLogin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -38,9 +42,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Doações</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Serviços</a>
-                    </li>
                 </ul>
                 <a class="btn btn-outline-warning" href="./loginPage.php">Entrar</a>
             </div>
@@ -49,7 +50,7 @@
     <main class="container d-flex justify-content-center mt-3 da-text-color">
         <div class="border rounded p-4 bg-white shadow-sm" style="width: 500px;">
             <h1>Entrar</h1>
-            <form action="" method="post">
+            <form action="./../db/login.php" method="post">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" required>
@@ -58,11 +59,7 @@
                     <label for="password" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="check" name="check" required>
-                    <label class="form-check-label" for="check">Li e aceito os termos de uso</label>
-                </div>
-                
+
                 <button type="submit" class="btn btn-success mb-3">Entrar</button>
                 <hr>
                 <div class="mb-3 text-center">

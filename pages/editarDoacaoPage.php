@@ -23,7 +23,7 @@ $uid = $_COOKIE['id'] ?? null;
 <body>
     <nav class="navbar navbar-expand-lg  da-header" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.php">
+            <a class="navbar-brand" href="./../index.php">
                 <img src="./../assets/img/logoAraras.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 DooAraras
             </a>

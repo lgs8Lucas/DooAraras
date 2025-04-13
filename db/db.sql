@@ -31,7 +31,7 @@ CREATE TABLE Doacao (
 CREATE TABLE TipoDoacao (
     id INT PRIMARY KEY AUTO_INCREMENT,
     categoria VARCHAR(50) NOT NULL
-);
+); 
  
 ALTER TABLE Doacao ADD CONSTRAINT FK_Doacao_2
     FOREIGN KEY (fk_TipoDoacao_id)

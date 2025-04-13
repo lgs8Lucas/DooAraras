@@ -1,6 +1,6 @@
 <?php
-require "../db/redirectSemAdmin.php";
-require "../db/connection.php";
+require "./../db/redirectSemAdmin.php";
+require "./../db/connection.php";
 $acesso = $_COOKIE['acesso'] ?? null;
 ?>
 

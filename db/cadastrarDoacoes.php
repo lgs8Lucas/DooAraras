@@ -1,46 +1,36 @@
 <?php
-require 'connection.php';
-require 'redirectComLogin.php';
+require './../db/connection.php';
+require "./../db/redirectSemLogin.php";
+$acesso = $_COOKIE['acesso'] ?? null;
+$id = $_COOKIE['id'] ?? null;
 
 if (
-   isset($_POST['titulo'], $_POST['quantidade'], $_POST['descricao'], $_POST['status'], $_POST['tipoDoacao']) && $_POST['idUsuario'] && $_POST['imagem'] &&
-   !empty($_POST['quantidade']) &&
-   !empty($_POST['descricao']) &&
-   !empty($_POST['status']) &&
-   !empty($_POST['imagem']) &&
-   !empty($_POST['tipoDoacao']) &&
-   !empty($_POST['idUsuario']) &&
-   !empty($_POST['CEP']) &&
-   !empty($_POST['numero']) &&
+   true
 ) {
 
    $titulo = addslashes($_POST['titulo']);
    $quantidade = addslashes($_POST['quantidade']);
    $descricao = addslashes($_POST['descricao']);
-   $status = addslashes($_POST['statu']);
+   $status = "A";
    $imagem = addslashes($_POST['imagem']);
    $tipoDoacao = addslashes($_POST['tipoDoacao']);
-   $idUsuario = addslashes($_POST['idUsuario']);
+   $idUsuario = $id;
    $CEP = addslashes($_POST['CEP']);
    $numero = addslashes($_POST['numero']);
 
-   $sql = "INSERT INTO  Doacao (titulo, descricao, statu, imagem) VALUES ('$titulo', '$quantidade', '$descricao', '$status', '$imagem','$tipoDoacao', '$idUsuario', '$CEP', '$numero')";
-   $sql = $pdo->query($sql);
+   $sql = "INSERT INTO doacao (`titulo`, `descricao`, `quantidade`, `status`, `imagem`, `fk_TipoDoacao_id`, `fk_Usuario_id`, `CEP`, `numero`) VALUES ('$titulo', '$descricao', '$quantidade', '$status', '$imagem', '$tipoDoacao', '$idUsuario', '$CEP', '$numero')";
 
-   $sql = "SELECT id FROM usuario WHERE CPF = '$cpf'";
    $sql = $pdo->query($sql);
-   $sql = $sql->fetch(PDO::FETCH_ASSOC);
-   $id = $sql['id'];
 
    echo "
-      <meta http-equiv='refresh' content='0;url=./../minhasDoacoesPage.php'>
+      <meta http-equiv='refresh' content='0;url=./../pages/minhasDoacoesPage.php'>
       <script type='text/javascript'>
          alert('Cadastro realizado com sucesso!');
       </script>
    ";
 } else {
    echo "
-		<meta http-equiv=refresh content='0; URL=./../pages/CadastroPage.php'>
+		<meta http-equiv=refresh content='0; URL=./../pages/cadastroDoacaoPage.php'>
 			<script type=\"text/javascript\">
 				alert(\"Por favor preencha todos os campos\");
 			</script>

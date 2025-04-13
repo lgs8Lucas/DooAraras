@@ -2,6 +2,7 @@
 require "./../db/redirectSemLogin.php";
 require "./../db/connection.php";
 $acesso = $_COOKIE['acesso'] ?? null;
+$uid = $_COOKIE['id'] ?? null;
 ?>
 
 <!DOCTYPE html>
@@ -69,24 +70,52 @@ $acesso = $_COOKIE['acesso'] ?? null;
 
     <main class="container justify-content-center mt-3 da-text-color">
         <div>
-            <h1>Nova Doação</h1>
-            <form action="./../db/cadastrarDoacoes.php" method="post">
+            <h1>Editar Doação</h1>
+            <?php
+            $id = $_GET['id'] ?? null;
+            if (!$id) {
+                "<meta http-equiv='refresh' content='0;url=./../pages/minhasDoacoesPage.php'>
+                <script type=\"text/javascript\">
+                    alert(\"Erro ao editar doação! Tente novamente mais tarde.\");
+                </script>";
+                exit;
+            }
+            $sql = "SELECT * FROM doacao WHERE id = $id";
+            $query = $pdo->query($sql);
+            if (!($query->rowCount() > 0)) {
+                "<meta http-equiv='refresh' content='0;url=./../pages/minhasDoacoesPage.php'>
+                <script type=\"text/javascript\">
+                    alert(\"Erro ao editar doação! Tente novamente mais tarde.\");
+                </script>";
+                exit;
+            }
+            $doacao = $query->fetch(PDO::FETCH_ASSOC);
+            if ($doacao['fk_Usuario_id'] != $uid) {
+                "<meta http-equiv='refresh' content='0;url=./../pages/minhasDoacoesPage.php'>
+                <script type=\"text/javascript\">
+                    alert(\"Você não tem permissão para editar esta doação!\");
+                </script>";
+                exit;
+            }
+            ?>
+
+            <form action="./../db/editarDoacao.php?id=<?= $doacao['id'] ?>" method="post">
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Titulo</label>
-                    <input type="text" class="form-control" id="titulo" name="titulo" required>
+                    <input type="text" class="form-control" id="titulo" name="titulo" required value="<?php echo $doacao['titulo']; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="$quantidade " class="form-label">Quantidade</label>
-                    <input type="number" class="form-control" placeholder="" id="quantidade" name="quantidade" required maxlength="11">
+                    <input type="number" class="form-control" placeholder="" id="quantidade" name="quantidade" value="<?php echo $doacao['quantidade']; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="descricao " class="form-label">Descrição</label>
-                    <textarea class="form-control" id="descricao" name="descricao" required maxlength="200"></textarea>
+                    <textarea class="form-control" id="descricao" name="descricao" required maxlength="200"><?php echo $doacao['descricao']; ?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="imagem" class="form-label">Imagem</label>
-                    <input type="url" class="form-control" id="imagem" name="imagem" required maxlength="200">
+                    <input type="url" class="form-control" id="imagem" name="imagem" value="<?php echo $doacao['imagem']; ?>">
                 </div>
 
                 <label for="tipoDoacao" class="form-label">Tipo de Doação</label>
@@ -98,7 +127,7 @@ $acesso = $_COOKIE['acesso'] ?? null;
 
                     if ($query->rowCount() > 0) {
                         foreach ($query->fetchAll() as $tipo) {
-                            echo "<option value='" . $tipo['id'] . "'>" . $tipo['categoria'] . "</option>";
+                            echo "<option value='" . $tipo['id'] . "' " . ($doacao['fk_TipoDoacao_id'] == $tipo['id'] ? " selected" : "") . ">" . $tipo['categoria'] . "</option>";
                         }
                     }
                     ?>
@@ -106,14 +135,14 @@ $acesso = $_COOKIE['acesso'] ?? null;
 
                 <div class="mb-3">
                     <label for="cep" class="form-label">CEP</label>
-                    <input type="text" class="form-control" id="CEP" name="CEP" required>
+                    <input type="text" class="form-control" id="CEP" name="CEP" required value="<?php echo $doacao['CEP']; ?>">
                 </div>
                 <div class="mb-3">
                     <label for="numero" class="form-label">Numero do Endereço</label>
-                    <input type="number" class="form-control" id="numero" name="numero" required>
+                    <input type="number" class="form-control" id="numero" name="numero" required value="<?php echo $doacao['numero']; ?>">
                 </div>
                 <hr>
-                <button type="submit" class="btn btn-success mb-3">Cadastrar</button>
+                <button type="submit" class="btn btn-success mb-3">Editar</button>
             </form>
         </div>
     </main>

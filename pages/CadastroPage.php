@@ -49,7 +49,7 @@
     <main class="container d-flex justify-content-center mt-3 da-text-color">
         <div class="border rounded p-4 bg-white shadow-sm" style="width: 500px;">
             <h1>Cadastro</h1>
-            <form action="" method="post">
+            <form action="./../db/cadastrarUser.php" method="post">
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome</label>
                     <input type="text" class="form-control" id="nome" name="nome" required>
@@ -69,7 +69,7 @@
                 <div class="mb-3">
                     <label for="cargo" class="form-label">Cargo</label>
                     <select name="cargo" id="cargo" class="form-select" required>
-                        <option value="A">Admin</option>
+                        <option value="A">Administrador</option>
                         <option value="U" selected>Usuário Padrão</option>
                     </select>
                 </div>

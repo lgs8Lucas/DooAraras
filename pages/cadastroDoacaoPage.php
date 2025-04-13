@@ -1,5 +1,8 @@
 <?php
 require './../db/redirectComLogin.php';
+require 'connection.php';
+$sql = "SELECT nome FROM usuario";
+$query = $pdo->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -64,9 +67,22 @@ require './../db/redirectComLogin.php';
                     <input type="text" class="form-control" id="descricao" name="descricao" required maxlength="11">
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">quantidade</label>
                     <input type="email" class="form-control" id="email" name="email" required>
                 </div>
+
+                <label for="Doacao" class="form-label">Tipo de Doação</label>
+              <select class="form-control" id="usuario" name="usuario">
+                <option value="">Selecione uma Doação</option>
+                <?php
+                    if($query->rowCount()>0){
+                        foreach($query->fetchAll() as $usuario){
+                            echo "<option value='".$usuario['nome']."'>".$usuario['nome']."</option>";
+                        }
+                    }
+                ?>       
+              </select></br>
+
                 <div class="mb-3">
                     <label for="cargo" class="form-label">Cargo</label>
                     <select name="cargo" id="cargo" class="form-select" required>

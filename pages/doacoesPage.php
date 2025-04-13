@@ -1,5 +1,5 @@
 <?php
-require "./../db/redirectSemAdmin.php";
+require "./../db/redirectSemLogin.php";
 require "./../db/connection.php";
 $acesso = $_COOKIE['acesso'] ?? null;
 ?>
@@ -93,9 +93,9 @@ $acesso = $_COOKIE['acesso'] ?? null;
                     echo '<div class="row">';
                     foreach ($doacoes as $doacao) {
                         echo '
-                            <div class="col mt-3">
-                                <div class="card h-100" style="width: 18rem;">
-                                    <img src="' . $doacao['imagem'] . '" class="card-img-top" alt="' . $doacao['titulo'] . '" style="height: 300px; object-fit: cover;">
+                            <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+                                <div class="card h-100">
+                                    <img src="' . $doacao['imagem'] . '" class="card-img-top" alt="' . $doacao['titulo'] . '" style="height: 400px; object-fit: cover;">
                                     <div class="card-body">
                                         <p class="card-text"><strong>Doado por:</strong> ' . $doacao['nome'] . '</p>
                                         <p class="card-text"><strong>Descrição:</strong> ' . $doacao['descricao'] . '</p>

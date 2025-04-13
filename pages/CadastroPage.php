@@ -78,6 +78,9 @@ require './../db/redirectComLogin.php';
                     <label for="senha" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="senha" name="senha" required>
                 </div>
+
+                <p><a class="link-opacity-100" href="termosUsoPage.php">Termos de Uso</a></p>
+
                 <hr>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="check" name="check" required>

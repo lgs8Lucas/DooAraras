@@ -25,7 +25,7 @@ if (
    $cpf2 = $sql['CPF'];
    $email2 = $sql['email'];
    
-   if($cpf2){
+   if($cpf2 == $cpf){
       echo "
          <meta http-equiv='refresh' content='0;URL=./../pages/CadastroPage.php'>
          <script type='text/javascript'>
@@ -33,7 +33,7 @@ if (
          </script>
       ";
       exit;
-   }else if ($email2){
+   }else if ($email2 == $email){
       echo "
          <meta http-equiv='refresh' content='0;URL=./../pages/CadastroPage.php'>
          <script type='text/javascript'>

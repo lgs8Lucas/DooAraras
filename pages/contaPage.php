@@ -84,7 +84,7 @@ $id = $_COOKIE['id'] ?? null;
         <a href="./../db/excluirUsuario.php?id=<?php echo $id; ?>" class="btn btn-danger">Excluir conta</a>
 
     </main>
-    <footer class="da-footer">
+    <footer class="da-footer mt-3">
         <p>&copy; 2025 DooAraras.</p>
     </footer>
     <script

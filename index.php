@@ -64,45 +64,56 @@
 		</div>
 	</nav>
 	<main class="container mt-3 da-text-color">
-		<h1>Início</h1>
+		<h1 class="text-center mb-5">Bem-vindo ao DooAraras</h1>
+		<section class="mb-5">
+			<p class="fs-5">
+				Em um mundo onde tantas pessoas enfrentam dificuldades para ter o básico, um gesto de empatia pode fazer toda a diferença.
+				O <strong>DooAraras</strong> nasceu com a missão de unir quem quer ajudar com quem mais precisa.
+			</p>
+			<p class="fs-5">
+				Aqui, você pode <strong>doar alimentos, roupas e também contribuir financeiramente</strong> para causas sociais e emergenciais.
+				Cada doação representa esperança, dignidade e um futuro melhor para famílias em situação de vulnerabilidade.
+			</p>
+		</section>
 
+		<section class="mb-5">
+			<h2>Conectando Solidariedade aos Objetivos Globais 🌍</h2>
+			<p class="fs-5">Nosso site de registro e publicidade de doações é uma ponte entre doadores e aqueles que precisam, contribuindo para um mundo mais justo e sustentável. Alinhamos nossa missão aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU, impactando as seguintes áreas:</p>
+			<ul class="list-group list-group-flush ms-4 fs-5 mb-3">
+				<li><strong>ODS 1 - Erradicação da Pobreza - </strong> Ajudamos a suprir necessidades básicas, como alimentos, roupas e moradia, para pessoas em situação de vulnerabilidade.</li>
+				<li><strong>ODS 2 - Fome Zero e Agricultura Sustentável - </strong> Promovemos doações de alimentos, combatendo a insegurança alimentar e apoiando produtores locais.</li>
+				<li><strong>ODS 3 - Saúde e Bem-Estar - </strong> Facilitamos o acesso a medicamentos e equipamentos médicos, melhorando a qualidade de vida em comunidades carentes.</li>
+				<li><strong>ODS 4 - Educação de Qualidade - </strong> Incentivamos a doação de materiais escolares e livros, proporcionando oportunidades de aprendizado para crianças e jovens.</li>
+				<li><strong>ODS 10 - Redução das Desigualdades - </strong> Conectamos comunidades desfavorecidas a recursos essenciais, diminuindo disparidades sociais.</li>
+				<li><strong>ODS 12 - Consumo e Produção Responsáveis - </strong> Fomentamos o reaproveitamento de bens, reduzindo desperdícios e promovendo práticas sustentáveis.</li>
+			</ul>
+		</section>
 
-		<div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="carousel">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="active"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active"></button>
-		</div>
-		<div class="carousel-inner rounded">
-			<div class="carousel-item active">
-			<img src="./assets/img/logoAraras.png" class="d-block w-40" alt="Imagem1">
-			</div>
-			<div class="carousel-item">
-			<img src="./assets/img/logoAraras.png" class="d-block w-40" alt="Imagem2">
-			</div>
-			<div class="carousel-item">
-			<img src="./assets/img/doe.png" class="d-block w-40" alt="Imagem3">
-			</div>
-		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon"></span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-			<span class="carousel-control-next-icon"></span>
-		</button>
-		</div>
+		<section class="mb-5">
+			<h2>Como você pode ajudar:</h2>
+			<ul class="list-group list-group-flush fs-5">
+				<li class="list-group-item">🥫 <strong>Alimentos:</strong> contribua com itens não perecíveis e ajude a alimentar quem tem fome.</li>
+				<li class="list-group-item">👕 <strong>Roupas:</strong> doe roupas em bom estado e leve conforto e autoestima a quem mais precisa.</li>
+				<li class="list-group-item">📚 <strong>Materias Educacionais:</strong> doe liveros em bom estado e transforme a vida de quem mais precisa.</li>
+				<li class="list-group-item">💰 <strong>Doações em dinheiro:</strong> cada centavo é transformado em ajuda real. Transparência total no uso dos recursos.</li>
+				<li class="list-group-item">😊 <strong>Muito mais:</strong> caso queira doar algo que não esteja com o ripo acastrado, contate nossos administradores!</li>
+			</ul>
+		</section>
 
-
+		<section class="text-center">
+			<h3 class="mb-3">Juntos, fazemos mais.</h3>
+			<p class="fs-5">Transforme empatia em ação. Faça parte dessa corrente do bem.</p>
+			<a href="./pages/doacoesPage.php" class="btn btn-success btn-lg">Doe hoje. Mude o amanhã.</a>
+		</section>
 	</main>
 
-	<footer class="da-footer">
-		<p>&copy; 2025 DooAraras.</p>
-	</footer>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
 		crossorigin="anonymous"></script>
-
+	<footer class="da-footer mt-3">
+		<p>&copy; 2025 DooAraras.</p>
+	</footer>
 
 </body>
 

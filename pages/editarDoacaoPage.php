@@ -143,10 +143,11 @@ $uid = $_COOKIE['id'] ?? null;
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-success mb-3">Editar</button>
+                <a href="./../pages/minhasDoacoesPage.php" class="btn btn-danger mb-3">Cancelar</a>
             </form>
         </div>
     </main>
-    <footer class="da-footer">
+    <footer class="da-footer mt-3">
         <p>&copy; 2025 DooAraras.</p>
     </footer>
     <script

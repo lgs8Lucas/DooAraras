@@ -100,7 +100,7 @@ $acesso = $_COOKIE['acesso'] ?? null;
             </tbody>
         </table>
     </main>
-    <footer class="da-footer">
+    <footer class="da-footer mt-3">
         <p>&copy; 2025 DooAraras.</p>
     </footer>
     <script

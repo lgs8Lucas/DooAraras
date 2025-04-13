@@ -93,6 +93,7 @@ $id = $_COOKIE['id'] ?? null;
                 <input type="password" class="form-control" id="senha" name="senha" required>
             </div>
             <button type="submit" class="btn btn-success mb-3">Alterar</button>
+            <a href="./../pages/contaPage.php" class="btn btn-danger mb-3">Cancelar</a>
         </form>
 
     </main>

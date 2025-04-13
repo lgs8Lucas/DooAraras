@@ -65,51 +65,58 @@ $acesso = $_COOKIE['acesso'] ?? null;
             </div>
         </div>
     </nav>
-      
-    <?php
-        $sql =("
-        SELECT 
-            d.titulo, 
-            d.descricao, 
-            d.imagem, 
-            d.quantidade, 
-            d.CEP, 
-            d.numero, 
-            t.categoria AS tipo
-        FROM Doacao d
-        JOIN TipoDoacao t ON d.TipoDoacao_id = t.id
-    ");
-        $query = $pdo->query($sql);
-        $doacoes = $query->fetchAll(PDO::FETCH_ASSOC);
-    ?>
-
-    <main class="container mt-5">        
-        <h2 class="mb-4">Doações</h2>
-
-        <?php    
-        $doacoesPorTipo = [];
-        foreach ($doacoes as $doacao) {
-            $doacoesPorTipo[$doacao['tipo']][] = $doacao;
+    <main class="container mt-3">
+        <h1 class="mb-4">Doações</h1>
+        <?php
+        $tiposDoacao = $pdo->query("SELECT * FROM TipoDoacao")->fetchAll();
+        if (empty($tiposDoacao)) {
+            echo '<div class="alert alert-warning" role="alert">Nenhum tipo de doação encontrado.</div>';
+        } else {
+            foreach ($tiposDoacao as $tipo) {
+                $doacoes = $pdo->query("
+                    SELECT 
+                        d.titulo, 
+                        d.descricao, 
+                        d.imagem, 
+                        d.quantidade, 
+                        d.CEP, 
+                        d.numero,
+                        u.nome,
+                        u.email,
+                        u.telefone
+                    FROM Doacao d
+                    INNER JOIN usuario u ON d.fk_Usuario_id = u.id
+                    WHERE d.fk_TipoDoacao_id = {$tipo['id']}
+                ")->fetchAll();
+                if (!empty($doacoes)) {
+                    echo '<h2 class="mt-4">' . $tipo['categoria'] . '</h2>';
+                    echo '<div class="row">';
+                    foreach ($doacoes as $doacao) {
+                        echo '
+                            <div class="col mt-3">
+                                <div class="card h-100" style="width: 18rem;">
+                                    <img src="' . $doacao['imagem'] . '" class="card-img-top" alt="' . $doacao['titulo'] . '" style="height: 300px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <p class="card-text"><strong>Doado por:</strong> ' . $doacao['nome'] . '</p>
+                                        <p class="card-text"><strong>Descrição:</strong> ' . $doacao['descricao'] . '</p>
+                                        <p class="card-text"><strong>Quantidade:</strong> ' . $doacao['quantidade'] . '</p>
+                                        <p class="card-text"><strong>CEP:</strong> ' . $doacao['CEP'] . '</p>
+                                        <p class="card-text"><strong>Número:</strong> ' . $doacao['numero'] . '</p>
+                                        <p class="card-text"><strong>Contato:</strong> ' . $doacao['email'] . ' <br/> ' . $doacao['telefone'] . '</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ';
+                    }
+                    echo '</div>';
+                }
+            }
         }
-
-        foreach ($doacoesPorTipo as $tipo => $doacoesDoTipo): ?>
-        <h3 class="mt-4"><?= ($tipo) ?></h3>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <?php foreach ($doacoesDoTipo  as $doacao): ?>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="<?= $doacao['imagem'] ?>" class="card-img-top" alt="<?= $doacao['titulo']?>" style="height: 300px; object-fit: cover;">
-                        <div class="card-body">
-                        <p class="card-text"><strong>Descrição:</strong> <?= $doacao['descricao'] ?></p>
-                        <p class="card-text"><strong>Quantidade:</strong> <?= $doacao['quantidade'] ?></p>
-                        <p class="card-text"><strong>CEP:</strong> <?= $doacao['CEP'] ?></p>
-                        <p class="card-text"><strong>Número:</strong> <?= $doacao['numero'] ?></p>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <?php endforeach; ?>
+        ?>
     </main>
+
+    <footer class="da-footer mt-3">
+        <p>&copy; 2025 DooAraras.</p>
+    </footer>
 
 </body>
